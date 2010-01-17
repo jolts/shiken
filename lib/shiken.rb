@@ -9,7 +9,7 @@ module Shiken
   end
 
   def self.run
-    Widgets::Windows::Main.new.start
+    Shiken::Application.start
   end
 end
 
@@ -22,4 +22,5 @@ require 'shiken/widgets/windows'
 require 'shiken/widgets/windows/main'
 require 'shiken/widgets/buttons'
 require 'shiken/widgets/buttons/quit'
+require 'shiken/application'
 require 'shiken/version'
