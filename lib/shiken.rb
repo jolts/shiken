@@ -4,7 +4,7 @@ module Shiken
   class ShikenError < Exception; end
 
   def self.run
-    Main.new.start
+    Windows::Main.new.start
   end
 end
 

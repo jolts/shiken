@@ -13,7 +13,7 @@ module Shiken
       @buttons ||= []
     end
 
-    def buttons=(button)
+    def button=(button)
       @buttons << button
     end
 
