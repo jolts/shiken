@@ -1,33 +1,30 @@
 module Shiken
   module Widgets
-    class Main
-      attr_accessor :options, :window
+    class Main < Qt::Widget
+      attr_accessor :options
 
-      def self.show(options = {})
+      def initialize(options = {})
         raise ShikenError, 'Invalid options format' unless options.is_a?(Hash)
+        @options = options
+        super()
+
+        set_fixed_size 125, 75
+        set_window_title self.class.to_s
+
+        vbox_layout.add_widget title_label
+        vbox_layout.add_widget quit_button
+
+        set_layout(vbox_layout)
+
+        connect_events
 
         Shiken.logger.debug "showing #{self}"
-        new(options)
       end
 
-      def initialize(options)
-        @options = options
+    private
 
-        init_main_window
-        connect_events
-        show
-      end
-
-      private
-
-      def init_main_window
-        @window = Qt::Widget.new
-        @window.set_fixed_size 125, 75
-        @window.set_window_title self.class.to_s
-        @window.layout = Qt::VBoxLayout.new do |layout| 
-          layout.add_widget title_label
-          layout.add_widget quit_button
-        end
+      def vbox_layout
+        @vbox_layout ||= Qt::VBoxLayout.new
       end
 
       def title_label
@@ -39,11 +36,7 @@ module Shiken
       end
 
       def connect_events
-        Qt::Object.connect quit_button, SIGNAL('clicked()'), options.app, SLOT('quit()')
-      end
-
-      def show
-        @window.show
+        Qt::Object.connect quit_button, SIGNAL('clicked()'), $qApp, SLOT('quit()')
       end
     end
   end

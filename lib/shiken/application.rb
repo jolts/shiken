@@ -4,10 +4,7 @@ module Shiken
       extend Shiken::Widgets
 
       app = Qt::Application.new(ARGV)
-
-      self.class_eval do
-        widget Widgets::Main.show :app => app
-      end
+      widget Widgets::Main.new.show
 
       Shiken.logger.debug "executing #{app.inspect}"
       app.exec
