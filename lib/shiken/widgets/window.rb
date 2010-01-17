@@ -17,7 +17,7 @@ module Shiken
       end
 
       def method_missing(method, *arguments, &block)
-        @window.send(method, *arguments, &block)
+        @window.send(method, *arguments, &block) if @window.respond_to?(method.to_sym)
       end
     end
   end

@@ -21,7 +21,7 @@ module Shiken
       end
 
       def method_missing(method, *arguments, &block)
-        @button.send(method, *arguments, &block)
+        @button.send(method, *arguments, &block) if @button.respond_to?(method.to_sym)
       end
     end
   end

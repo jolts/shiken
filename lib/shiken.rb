@@ -7,10 +7,6 @@ module Shiken
   def self.logger
     @logger ||= Logger.new(STDOUT)
   end
-
-  def self.run
-    Shiken::Application.start
-  end
 end
 
 $:.unshift File.dirname(__FILE__)
