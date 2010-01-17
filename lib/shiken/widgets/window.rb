@@ -1,13 +1,12 @@
 module Shiken
   module Widgets
     class Window
-      attr_accessor :app, :window, :options
+      attr_accessor :window, :options
 
       def initialize(options = {})
         raise ShikenError, 'Invalid option format' unless options.is_a?(Hash)
 
         @window  = Qt::Widget.new
-        @app     = options.app
         @options = options
 
         yield(@window)
@@ -16,7 +15,7 @@ module Shiken
         show
       end
 
-      def set_size(geometry = options.geometry)
+      def set_size(geometry = options[:geometry])
         @window.setFixedSize geometry.width, geometry.height
       end
 
