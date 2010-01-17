@@ -3,12 +3,12 @@ module Shiken
     class Window
       attr_accessor :app, :window, :buttons, :options
 
-      def initialize(options = {}, &block)
+      def initialize(options = {})
         raise ShikenError, 'Options should be a hash' unless options.is_a?(Hash)
 
         @app     = options.app
         @window  = Qt::Widget.new
-        @buttons = block.call(@window)
+        @buttons = yield(@window)
         @options = options
 
         @window.setFixedSize options.geometry.width, options.geometry.height
