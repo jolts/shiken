@@ -4,6 +4,6 @@ module Shiken
     MINOR = '0'
     TINY  = 'pre'
  
-    STRING = [MAJOR, MINOR, TINY].join('.')
+    STRING = [MAJOR, MINOR, TINY].join('.').freeze
   end
 end

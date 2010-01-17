@@ -1,5 +1,3 @@
-require 'Qt4'
-
 module Shiken
   module Windows
     class MainWindow
