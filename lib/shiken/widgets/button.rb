@@ -8,11 +8,15 @@ module Shiken
         @button  = Qt::PushButton.new(@title, options.window)
         @options = options
 
-        @button.setGeometry 10, 40, 180, 40
+        @button.setGeometry(options.geometry.x,
+                            options.geometry.y,
+                            options.geometry.width,
+                            options.geometry.height)
         connect(options.signal, options.slot)
       end
 
       def connect(signal, slot)
+        Shiken.logger.debug "connecting button #{self} with #{signal}->#{slot}"
         Qt::Object.connect @button, SIGNAL(signal), @options.app, SLOT(slot)
       end
 

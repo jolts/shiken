@@ -1,7 +1,12 @@
+require 'logger'
 require 'Qt4'
 
 module Shiken
   class ShikenError < Exception; end
+
+  def self.logger
+    @logger ||= Logger.new(STDOUT)
+  end
 
   def self.run
     Widgets::Windows::Main.new.start
