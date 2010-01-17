@@ -1,22 +1,20 @@
 module Shiken
-  class MainWindow < Window
-    attr_accessor :app, :quit_button, :window
-
-    def initialize(parent = nil)
-      @app = Qt::Application.new(ARGV)
-      @window = Qt::Widget.new
+  class Main < Window
+    def initialize
+      super(:height => 120, :width => 200)
+      buttons << quit_button
     end
 
-    def initialize_buttons
-      @quit_button = Qt::PushButton.new('Quit', window)
-      @quit_button.setGeometry(10, 40, 180, 40)
-      Qt::Object.connect(@quit_button, SIGNAL('clicked()'), app, SLOT('quit()'))
+    def quit_button
+      quit_button = Qt::PushButton.new('Quit', window)
+      quit_button.setGeometry(10, 40, 180, 40)
+      Qt::Object.connect(quit_button, SIGNAL('clicked()'), app, SLOT('quit()'))
     end
 
     def start
-      @window.setFixedSize(200,120)
-      @window.show
-      @app.exec
+      window.setFixedSize @options.width, @options.height
+      window.show
+      app.exec
     end
   end
 end
