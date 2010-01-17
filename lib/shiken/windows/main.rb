@@ -3,7 +3,7 @@ module Shiken
     class Main < Window
       def initialize
         super(:height => 120, :width => 200)
-        button = quit_button
+        button quit_button
       end
 
       def quit_button

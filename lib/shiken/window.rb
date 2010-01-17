@@ -13,8 +13,8 @@ module Shiken
       @buttons ||= []
     end
 
-    def button=(button)
-      @buttons << button
+    def button(button)
+      buttons << button
     end
 
     def method_missing(method, *arguments, &block)
