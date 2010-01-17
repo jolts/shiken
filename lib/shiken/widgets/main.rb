@@ -8,7 +8,7 @@ module Shiken
         @options = options
         super()
 
-        set_fixed_size 125, 75
+        resize 125, 75
         set_window_title self.class.to_s
 
         vbox_layout.add_widget title_label
