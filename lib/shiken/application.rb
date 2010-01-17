@@ -1,18 +1,13 @@
 module Shiken
   module Application
     def self.start
-      extend Widgets::Windows
-      extend Widgets::Buttons
-
       app = Qt::Application.new(ARGV)
 
-      main_window = Widgets::Windows::Main.new(:app => app) do |window|
-        button Widgets::Buttons::Quit.new(:window => window, :app => app)
+      Widgets::Windows::Main.new(:app => app) do |window|
+        Widgets::Buttons::Quit.new(:window => window, :app => app)
       end
 
-      window main_window
-
-      Shiken.logger.debug "executing #{app} with windows #{windows} and buttons #{buttons}"
+      Shiken.logger.debug "executing #{app}"
       app.exec
     end
   end

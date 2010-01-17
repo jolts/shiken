@@ -4,15 +4,23 @@ module Shiken
       attr_accessor :app, :window, :options
 
       def initialize(options = {})
-        raise ShikenError, 'Options should be a hash' unless options.is_a?(Hash)
+        raise ShikenError, 'Invalid option format' unless options.is_a?(Hash)
 
-        @app     = options.app
         @window  = Qt::Widget.new
+        @app     = options.app
         @options = options
 
         yield(@window)
 
-        @window.setFixedSize options.geometry.width, options.geometry.height
+        set_size
+        show
+      end
+
+      def set_size(geometry = options.geometry)
+        @window.setFixedSize geometry.width, geometry.height
+      end
+
+      def show
         @window.show
       end
 
