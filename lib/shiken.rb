@@ -4,12 +4,17 @@ module Shiken
   class ShikenError < Exception; end
 
   def self.run
-    Windows::Main.new.start
+    Widgets::Windows::Main.new.start
   end
 end
 
 $:.unshift File.dirname(__FILE__)
 require 'shiken/support'
-require 'shiken/window'
-require 'shiken/windows'
+require 'shiken/widgets'
+require 'shiken/widgets/window'
+require 'shiken/widgets/button'
+require 'shiken/widgets/windows'
+require 'shiken/widgets/windows/main'
+require 'shiken/widgets/buttons'
+require 'shiken/widgets/buttons/quit'
 require 'shiken/version'
