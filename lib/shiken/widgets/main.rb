@@ -16,8 +16,6 @@ module Shiken
 
         set_layout(vbox_layout)
 
-        connect_events
-
         Shiken.logger.debug "showing #{self}"
       end
 
@@ -32,11 +30,12 @@ module Shiken
       end
 
       def quit_button
-        @quit_button ||= Qt::PushButton.new 'Quit', @window
-      end
-
-      def connect_events
-        Qt::Object.connect quit_button, SIGNAL('clicked()'), $qApp, SLOT('quit()')
+        @quit_button ||= Qt::PushButton.new 'Exit', @window do
+          connect SIGNAL(:clicked) do
+            Shiken.logger.info 'shutting down...'
+            Qt::Application.instance.quit
+          end
+        end
       end
     end
   end
