@@ -12,9 +12,6 @@ end
 $:.unshift File.dirname(__FILE__)
 require 'shiken/support'
 require 'shiken/widgets'
-require 'shiken/widgets/window'
-require 'shiken/widgets/button'
-require 'shiken/widgets/windows/main'
-require 'shiken/widgets/buttons/quit'
+require 'shiken/widgets/main'
 require 'shiken/application'
 require 'shiken/version'

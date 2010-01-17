@@ -1,13 +1,11 @@
 module Shiken
   module Widgets
-=begin
     def widgets
       @widgets ||= []
     end
 
-    def widget(box)
-      widgets << box
+    def widget(view)
+      widgets << view
     end
-=end
   end
 end
